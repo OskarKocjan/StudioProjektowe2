@@ -1,3 +1,7 @@
 num X: 600
 
 canvas: X, X, #white
+
+point S1: 300, 300
+
+draw S1

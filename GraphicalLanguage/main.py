@@ -65,6 +65,9 @@ def execute_graphly_script(argv):  # second run of program
 
     GraphlyProgramVisitor(filename).visit(tree)
 
+    while True:
+        pass
+
 
 
 def main(argv):
