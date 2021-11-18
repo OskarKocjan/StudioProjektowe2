@@ -1,3 +1,7 @@
+# SP2
+
+Project realized in coolabration with Oskar Kocjan and Stanisław Światłoch
+
 ## Table of contents
 
 - [Setup](#setup)
