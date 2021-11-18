@@ -3,7 +3,7 @@ from math import sin, cos, radians
 from vpython import *
 
 class Drawable:
-    def draw(self, screen):
+    def draw(self, screen,canvas):
         pass
 
     def fill(self, color):
@@ -52,7 +52,7 @@ class Group(Drawable):
             ret += '  ' + str(m) + ','
         return ret[:-2] + f'\n]>'
 
-    def draw(self, screen):
+    def draw(self, screen,canvas):
         for m in self.members:
             m.draw(screen)
 
@@ -84,7 +84,7 @@ class Point(Drawable):
         self.x = x
         self.y = y
         self.name = name
-        self.color = (0, 0, 0)
+        self.color = (255, 255, 255)
 
     def get_coordination_tuple(self):
         return self.x, self.y
@@ -92,8 +92,9 @@ class Point(Drawable):
     def __str__(self):
         return f'<point, {self.name}, ({self.x}, {self.y}), #{self.color}>'
 
-    def draw(self, screen):
-        sphere(canvas = screen)
+    def draw(self, screen, canvas):
+        cr = shapes.circle(radius=2, pos = [self.x,self.y])
+        extrusion(path=[vec(0,0,0), vec(0,0,0.2)], shape=cr,color=color.magenta)
         #pygame.draw.circle(screen, self.color, (self.x, self.y), self.POINT_RADIUS)
     
     def move(self, x, y):
@@ -133,7 +134,7 @@ class Segment(Drawable):
     def __str__(self):
         return f'<segment, {self.name}, {self.start_point}, {self.end_point}, #{self.color}>'
 
-    def draw(self, screen):
+    def draw(self, screen,canvas):
         start_point = self.start_point.get_coordination_tuple()
         end_point = self.end_point.get_coordination_tuple()
         pygame.draw.line(screen, self.color, start_point, end_point, self.width)
@@ -186,9 +187,10 @@ class Circle(Drawable):
     def __str__(self):
         return f'<circle, {self.name}, {self.center_point}, {self.radius}, #{self.color}>'
 
-    def draw(self, screen):
+    def draw(self, screen,canvas):
         center_point = self.center_point.get_coordination_tuple()
-        pygame.draw.circle(screen, self.color, center_point, self.radius)
+        cr = shapes.circle(radius=self.radius, pos = [center_point[0],center_point[1]])
+        extrusion(path=[vec(0,0,0), vec(0,0,0.2)], shape=cr,color=color.magenta)
   
     def move(self, x, y):
         self.center_point.x += x
@@ -230,7 +232,7 @@ class Polygon(Drawable):
             ret += str(p) + ', '
         return ret[:-2] + f'], #{self.color}>'
 
-    def draw(self, screen):
+    def draw(self, screen,canvas):
         coordination_tuples_list = [point.get_coordination_tuple() for point in self.points]
         pygame.draw.polygon(screen, self.color, coordination_tuples_list, self.width)
 

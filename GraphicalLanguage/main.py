@@ -3,7 +3,6 @@ import sys
 
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
-import pygame
 
 from GraphlyLexer import GraphlyLexer
 from GraphlyParser import GraphlyParser

@@ -1,7 +1,9 @@
 num X: 600
 
-canvas: X, X, #white
-
-point S1: 300, 300
+canvas: X, X + 600, #white
+point P7: 50, 50
+circle C: P7, 100
+point S1: 10, 20
 
 draw S1
+draw C

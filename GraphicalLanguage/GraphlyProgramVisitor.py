@@ -63,6 +63,7 @@ class GraphlyProgramVisitor(GraphlyVisitor):
             "drawable": "drawable",
             Drawable: "drawable"
         }
+        self.canvas2d = shapes.rectangle(width=12, height=8)
         self.screen = canvas(background  = color.black)
         self.group_member_types = ("shapes", "circles", "points", "polygons", "segments", "drawables")
 
@@ -285,6 +286,11 @@ class GraphlyProgramVisitor(GraphlyVisitor):
             raise NonPositiveValueInCanvasException(ctx.start.line, y)
 
         #self.screen = pygame.display.set_mode((x, y))
+        self.screen.width = y
+        self.screen.height = x
+        #tmp solution to canvas2d
+        dummy_canvas = shapes.rectangle(width=300, height=200) # a disk
+        extrusion(path=[vec(0,0,0), vec(0,0,0.2)], shape=dummy_canvas)
 
         if color in self.colors:
             pass
@@ -316,7 +322,7 @@ class GraphlyProgramVisitor(GraphlyVisitor):
         variable = self.try_to_get_member(ctx, ctx.arg, name)
 
         if issubclass(type(variable), Drawable):
-            variable.draw(self.screen)
+            variable.draw(self.screen,self.canvas2d) #changed
         else:
             raise BadArgumentException(ctx.start.line, "draw", name, self.types[type(variable)])
 
