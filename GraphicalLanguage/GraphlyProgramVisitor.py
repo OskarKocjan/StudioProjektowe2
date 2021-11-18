@@ -1,5 +1,6 @@
-import pygame
+#import pygame
 import sys
+from vpython import *
 
 from GraphlyVisitor import GraphlyVisitor
 from GraphlyParser import GraphlyParser
@@ -62,7 +63,7 @@ class GraphlyProgramVisitor(GraphlyVisitor):
             "drawable": "drawable",
             Drawable: "drawable"
         }
-
+        self.screen = canvas(background  = color.black)
         self.group_member_types = ("shapes", "circles", "points", "polygons", "segments", "drawables")
 
     def variable_exists(self, variable):
@@ -283,7 +284,7 @@ class GraphlyProgramVisitor(GraphlyVisitor):
         if y <= 0:
             raise NonPositiveValueInCanvasException(ctx.start.line, y)
 
-#        self.screen = pygame.display.set_mode((x, y))
+        #self.screen = pygame.display.set_mode((x, y))
 
         if color in self.colors:
             pass

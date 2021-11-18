@@ -1,5 +1,6 @@
 import pygame
 from math import sin, cos, radians
+from vpython import *
 
 class Drawable:
     def draw(self, screen):
@@ -92,7 +93,8 @@ class Point(Drawable):
         return f'<point, {self.name}, ({self.x}, {self.y}), #{self.color}>'
 
     def draw(self, screen):
-        pygame.draw.circle(screen, self.color, (self.x, self.y), self.POINT_RADIUS)
+        sphere(canvas = screen)
+        #pygame.draw.circle(screen, self.color, (self.x, self.y), self.POINT_RADIUS)
     
     def move(self, x, y):
         self.x += x
