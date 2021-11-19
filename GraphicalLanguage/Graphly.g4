@@ -31,6 +31,7 @@ program
 
 instruction 
 	: canvas
+	| plane
 	| shape 
 	| num
 	| draw 
@@ -82,15 +83,25 @@ condition_block
 shape 
 	: 
 	point 
+	| vector
 	| segment 
 	| circle 
 	| polygon
+	| sphere
+	| box
+	| plane
 	;
 
 point 
 	: 
 	WS* 'point' WS+ NAME WS* ':' 
 	WS* x=expr WS* ',' WS* y=expr
+	;
+
+vector
+	:
+	WS* 'vector' WS+ NAME WS* ':'
+	WS* x=expr WS* ',' WS* y=expr WS* ',' WS* z=expr
 	;
 
 segment 
@@ -109,6 +120,24 @@ polygon
 	: 
 	WS* 'polygon' WS+ NAME WS* ':' 
 	WS* NAME
+	;
+
+sphere
+	:
+	WS* 'sphere' WS+ NAME WS* ':'
+	WS* NAME WS* ',' WS* expr
+	;
+
+box
+	:
+	WS* 'sphere' WS+ NAME WS* ':'
+	WS* NAME WS* ',' WS* NAME
+	;
+
+plane
+	:
+	WS* 'plane' WS+ NAME WS* ':'
+	WS* NAME WS* ',' WS* NAME
 	;
 
 groupMember 

@@ -80,6 +80,15 @@ class GraphlyListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by GraphlyParser#vector.
+    def enterVector(self, ctx:GraphlyParser.VectorContext):
+        pass
+
+    # Exit a parse tree produced by GraphlyParser#vector.
+    def exitVector(self, ctx:GraphlyParser.VectorContext):
+        pass
+
+
     # Enter a parse tree produced by GraphlyParser#segment.
     def enterSegment(self, ctx:GraphlyParser.SegmentContext):
         pass
@@ -104,6 +113,33 @@ class GraphlyListener(ParseTreeListener):
 
     # Exit a parse tree produced by GraphlyParser#polygon.
     def exitPolygon(self, ctx:GraphlyParser.PolygonContext):
+        pass
+
+
+    # Enter a parse tree produced by GraphlyParser#sphere.
+    def enterSphere(self, ctx:GraphlyParser.SphereContext):
+        pass
+
+    # Exit a parse tree produced by GraphlyParser#sphere.
+    def exitSphere(self, ctx:GraphlyParser.SphereContext):
+        pass
+
+
+    # Enter a parse tree produced by GraphlyParser#box.
+    def enterBox(self, ctx:GraphlyParser.BoxContext):
+        pass
+
+    # Exit a parse tree produced by GraphlyParser#box.
+    def exitBox(self, ctx:GraphlyParser.BoxContext):
+        pass
+
+
+    # Enter a parse tree produced by GraphlyParser#plane.
+    def enterPlane(self, ctx:GraphlyParser.PlaneContext):
+        pass
+
+    # Exit a parse tree produced by GraphlyParser#plane.
+    def exitPlane(self, ctx:GraphlyParser.PlaneContext):
         pass
 
 
